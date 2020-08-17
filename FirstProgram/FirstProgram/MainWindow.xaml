@@ -1,0 +1,46 @@
+﻿<Window x:Class="FirstProgram.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FirstProgram"
+        mc:Ignorable="d"
+        Title="NOTMainWindow" Name="Win" Height="450" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="196*"/>
+            <RowDefinition Height="34*"/>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <Label Margin="10" Width="100" Content="Name of server"/>
+            <TextBox Name="Adress" Width="200" Height="20"/>
+        </DockPanel>
+        <DockPanel Grid.Row="1">
+            <Label Margin="10" Width="100" Content="Server type"/>
+            <ComboBox  Name="ChangeType" Width="200" Height="20" SelectionChanged="ChangeType_SelectionChanged">
+                <ComboBoxItem Name="sql" Content="SQL Server"/>
+                <ComboBoxItem Name="windows" Content="Windows Server"/>
+            </ComboBox>
+        </DockPanel>
+        <DockPanel Grid.Row="2">
+            <Label Name="LLogin"  Margin="10" Width="100" Content="Login" IsEnabled="False"/>
+            <TextBox Name="Login" Margin="10" Width="200" Height="20" IsEnabled="False" />
+        </DockPanel>
+        <DockPanel Grid.Row="3">
+            <Label Name="LPass" Margin="10" Width="100" Content="Password" IsEnabled="False"/>
+            <PasswordBox Name="Password" Width="200" Height="20" IsEnabled="False"/>
+        </DockPanel>
+        <DockPanel Grid.Row="4">
+            <ListBox Name="DbList">
+            </ListBox>
+        </DockPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="5">
+            <Button Margin="3" Name="btnAcept" Content="Acept" Click="btnAcept_Click" Width="100"></Button>
+            <Button Margin="3" Name="btnExit" Content="Exit" Click="btnExit_Click" Width="100"></Button>
+         </StackPanel>
+    </Grid>
+</Window>

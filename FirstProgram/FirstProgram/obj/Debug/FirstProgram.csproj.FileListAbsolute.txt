@@ -1,0 +1,15 @@
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\obj\Debug\FirstProgram.csprojAssemblyReference.cache
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\obj\Debug\MainWindow.g.cs
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\obj\Debug\App.g.cs
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\obj\Debug\FirstProgram_MarkupCompile.cache
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\obj\Debug\FirstProgram_MarkupCompile.lref
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\bin\Debug\FirstProgram.exe.config
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\bin\Debug\FirstProgram.exe
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\bin\Debug\FirstProgram.pdb
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\obj\Debug\MainWindow.baml
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\obj\Debug\FirstProgram.g.resources
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\obj\Debug\FirstProgram.Properties.Resources.resources
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\obj\Debug\FirstProgram.csproj.GenerateResource.cache
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\obj\Debug\FirstProgram.csproj.CoreCompileInputs.cache
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\obj\Debug\FirstProgram.exe
+D:\шаг\C#\ado.net\HomeWork\FirstProgram\FirstProgram\obj\Debug\FirstProgram.pdb
