@@ -1,6 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace FirstProgram
 {
@@ -9,23 +10,25 @@ namespace FirstProgram
     /// </summary>
     public partial class MainWindow : Window
     {
+        static SqlConnection connection = new SqlConnection();
         public MainWindow()
         {
             InitializeComponent();
+            btnIndecator.Background = new SolidColorBrush(Colors.Red);
         }
 
         private void ChangeType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ChangeType.SelectedIndex == 0)
             {
-                LPass.IsEnabled=Password.IsEnabled = true;
-                LLogin.IsEnabled=Login.IsEnabled = true;
+                LPass.IsEnabled = Password.IsEnabled = true;
+                LLogin.IsEnabled = Login.IsEnabled = true;
             }
             else
             {
                 Adress.Text = @"(localdb)\MSSQLLocalDB";
-                LPass.IsEnabled=Password.IsEnabled = false;
-                LLogin.IsEnabled=Login.IsEnabled = false;
+                LPass.IsEnabled = Password.IsEnabled = false;
+                LLogin.IsEnabled = Login.IsEnabled = false;
             }
         }
 
@@ -33,7 +36,6 @@ namespace FirstProgram
         {
             string connectionStringSQL;
 
-            DbList.Items.Clear();
             if (ChangeType.SelectedIndex == 0)
                 connectionStringSQL = $"Data Source={Adress.Text};" +
                                       $"Initial Catalog=master;" +
@@ -44,33 +46,54 @@ namespace FirstProgram
                 connectionStringSQL = $"Data Source={Adress.Text};" +
                                    "Initial Catalog=master;" +
                                    "Integrated Security=True";
-          
-            using (SqlConnection connection = new SqlConnection(connectionStringSQL))
+            connection.ConnectionString = connectionStringSQL;
+
+            try
             {
-                try
-                {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand("select Name from sys.sysdatabases", connection);
+                connection.Open();
+                btnIndecator.Background = new SolidColorBrush(Colors.Green);
+                SqlCommand command = new SqlCommand("select Name from sys.sysdatabases", connection);
+                SqlDataReader reader = command.ExecuteReader();
 
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    if (reader.HasRows)
-                        while (reader.Read())
-                        {
-                            DbList.Items.Add(reader["Name"]);
-                        }
-                    reader.Close();
-          
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK,MessageBoxImage.Error);
-                }
+                if (reader.HasRows)
+                    while (reader.Read())
+                    {
+                        cbDatabases.Items.Add(reader["Name"]);
+                    }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        private void btnExit_Click(object sender, RoutedEventArgs e)
+
+        private void cbDatabases_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Win.Close();
+            lbTable.Items.Clear();
+            SqlCommand showTable = new SqlCommand($"use {cbDatabases.SelectedItem.ToString()}; select Name From sys.tables", connection);
+
+            CompliteSqlCommand(lbTable, showTable);
         }
+        private void CompliteSqlCommand(ListBox lb, SqlCommand command)
+        {
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+                while (reader.Read())
+                    lb.Items.Add(reader["Name"]);
+
+            reader.Close();
+        }
+        private void lbTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lbTableContent.Items.Clear();
+            if (lbTable.SelectedItem == null)
+                return;
+
+            SqlCommand showTableContent = new SqlCommand($" select * From {lbTable.SelectedItem.ToString()} ", connection);
+            CompliteSqlCommand(lbTableContent, showTableContent);
+        }
+        private void Win_Closing(object sender, System.ComponentModel.CancelEventArgs e) => connection.Close();
+        private void btnExit_Click(object sender, RoutedEventArgs e) => Win.Close();
     }
 }

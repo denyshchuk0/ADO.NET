@@ -5,42 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FirstProgram"
         mc:Ignorable="d"
-        Title="NOTMainWindow" Name="Win" Height="450" Width="400">
+        Title="NOTMainWindow" Name="Win" Height="350" Width="800" Closing="Win_Closing">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="48*"/>
-            <RowDefinition Height="47*"/>
-            <RowDefinition Height="48*"/>
-            <RowDefinition Height="47*"/>
-            <RowDefinition Height="196*"/>
-            <RowDefinition Height="34*"/>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="278*"/>
         </Grid.RowDefinitions>
-        <DockPanel>
-            <Label Margin="10" Width="100" Content="Name of server"/>
-            <TextBox Name="Adress" Width="200" Height="20"/>
-        </DockPanel>
-        <DockPanel Grid.Row="1">
-            <Label Margin="10" Width="100" Content="Server type"/>
-            <ComboBox  Name="ChangeType" Width="200" Height="20" SelectionChanged="ChangeType_SelectionChanged">
-                <ComboBoxItem Name="sql" Content="SQL Server"/>
-                <ComboBoxItem Name="windows" Content="Windows Server"/>
-            </ComboBox>
-        </DockPanel>
-        <DockPanel Grid.Row="2">
-            <Label Name="LLogin"  Margin="10" Width="100" Content="Login" IsEnabled="False"/>
-            <TextBox Name="Login" Margin="10" Width="200" Height="20" IsEnabled="False" />
-        </DockPanel>
-        <DockPanel Grid.Row="3">
-            <Label Name="LPass" Margin="10" Width="100" Content="Password" IsEnabled="False"/>
-            <PasswordBox Name="Password" Width="200" Height="20" IsEnabled="False"/>
-        </DockPanel>
-        <DockPanel Grid.Row="4">
-            <ListBox Name="DbList">
-            </ListBox>
-        </DockPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="5">
-            <Button Margin="3" Name="btnAcept" Content="Acept" Click="btnAcept_Click" Width="100"></Button>
-            <Button Margin="3" Name="btnExit" Content="Exit" Click="btnExit_Click" Width="100"></Button>
-         </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="47*"/>
+                <RowDefinition Height="48*"/>
+                <RowDefinition Height="46*"/>
+                <RowDefinition Height="48*"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="10" Width="100" Content="Name of server"/>
+                <TextBox Name="Adress" Width="140" Height="20"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <Label Margin="10" Width="100" Content="Server type"/>
+                <ComboBox  Name="ChangeType" Width="140" Height="20" SelectionChanged="ChangeType_SelectionChanged">
+                    <ComboBoxItem Name="sql" Content="SQL Server"/>
+                    <ComboBoxItem Name="windows" Content="Windows Server"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                <Label Name="LLogin"  Margin="10" Width="100" Content="Login" IsEnabled="False"/>
+                <TextBox Name="Login"  Width="140" Height="20" IsEnabled="False" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="3">
+                <Label Name="LPass" Margin="10" Width="100" Content="Password" IsEnabled="False"/>
+                <PasswordBox Name="Password" Width="140" Height="20" IsEnabled="False"/>
+            </StackPanel>
+            <DockPanel Grid.Row="4" >
+                <Button Name="btnIndecator" Margin="0 10"/>
+            </DockPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="5" Margin="26,0" Width="212">
+                <Button Margin="3" Name="btnAcept" Content="Acept" Click="btnAcept_Click" Width="100"></Button>
+                <Button Margin="3" Name="btnExit" Content="Exit" Click="btnExit_Click" Width="100"></Button>
+            </StackPanel>
+        </Grid>
+
+        <ComboBox Grid.Column="1"  Name="cbDatabases" Margin="10" Height="20" SelectionChanged="cbDatabases_SelectionChanged"/>
+        <ListBox Name="lbTable" Grid.Column="1" Grid.Row="1"  Margin="5" SelectionChanged="lbTable_SelectionChanged"  />
+
+        <ListBox Name="lbTableContent" Margin="5" Grid.Column="2" Grid.RowSpan="2"/>
     </Grid>
 </Window>
