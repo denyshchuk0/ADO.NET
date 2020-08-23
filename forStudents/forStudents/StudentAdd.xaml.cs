@@ -1,18 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Common;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace forStudents
 {
@@ -21,9 +10,11 @@ namespace forStudents
     /// </summary>
     public partial class StudentAdd : Window
     {
-        
-        public SqlConnection connection { get; set; }
+        public DbConnection Connection { get; set; }
+        public DbProviderFactory Factory { get; set; }
+
         List<int> IdGroup = new List<int>();
+        public int IdStudents { get; set; }
         public StudentAdd()
         {
             InitializeComponent();
@@ -33,19 +24,24 @@ namespace forStudents
         {
             try
             {
-                SqlCommand command = new SqlCommand($"insert into Student values('{tbName.Text}','{tbSurname.Text}',{IdGroup[cbGroups.SelectedIndex]})", connection);
-
+                DbCommand command = Factory.CreateCommand();
+                command.CommandText = $"insert into Student values('{tbName.Text}','{tbSurname.Text}',{ IdGroup[cbGroups.SelectedIndex]})";
+                command.Connection = Connection;
                 command.ExecuteNonQuery();
             }
-            catch (SqlException ex) {
+            catch (DbException ex)
+            {
                 MessageBox.Show(ex.Message);
             }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            SqlCommand command = new SqlCommand("select Name, Id from Groups", connection);
-            SqlDataReader reader = command.ExecuteReader();
+            DbCommand command = Factory.CreateCommand();
+            command.CommandText = "select Name, Id from Groups";
+            command.Connection = Connection;
+
+            DbDataReader reader = command.ExecuteReader();
             if (reader.HasRows)
                 while (reader.Read())
                 {
@@ -53,6 +49,21 @@ namespace forStudents
                     IdGroup.Add(Convert.ToInt32(reader["id"]));
                 }
             reader.Close();
+        }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DbCommand command = Factory.CreateCommand();
+                command.CommandText = $"update Student set Name = '{tbName.Text}', Surname = '{tbSurname.Text}', IdGroup = {IdGroup[cbGroups.SelectedIndex]} where id= '{IdStudents}'";
+                command.Connection = Connection;
+                command.ExecuteNonQuery();
+            }
+            catch (DbException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

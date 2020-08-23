@@ -26,6 +26,7 @@
             <ComboBox Name="cbGroups" Width="200" Margin="5"/>
         </StackPanel>
         <Button Grid.Row="3" Margin="5" Name="btnAdd" Content="Add" Click="btnAdd_Click" />
+        <Button Grid.Row="3" Margin="5" Name="btnUpdate" Content="Update" Click="btnUpdate_Click" />
 
     </Grid>
 </Window>
