@@ -5,18 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:forStudents"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="300" Closed="Window_Closed">
+        Title="MainWindow" Height="400" Width="300" Closed="Window_Closed" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" FontStyle="Italic">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="323*"/>
             <RowDefinition Height="46*"/>
         </Grid.RowDefinitions>
-        <ListBox Name="lbStudents" Margin="3 0" />
+        <ListBox Name="lbStudents" Margin="3 0" Background="{x:Null}" />
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="250">
-            <Button Width="50" Name="btnAdd" Content="Add" Margin="5" Click="btnAdd_Click" />
-            <Button Width="50" Name= "btnDelete" Content="Delete" Margin="5" Click="btnDelete_Click" />
-            <Button Width="50" Name="btnUpdate" Content="Update" Margin="5" Click="btnUpdate_Click" />
-            <Button Width="50" Name="btnReload" Content="Reload L" Margin="5" Click="btnReload_Click" />
+            <Button Width="50" Name="btnAdd" Content="Add" Margin="5" Click="btnAdd_Click" BorderThickness="1" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" FontStyle="Italic" Background="{x:Null}" >
+                <Button.Effect>
+                    <DropShadowEffect Color="#FF4C9537" RenderingBias="Quality"/>
+                </Button.Effect>
+            </Button>
+            <Button Width="50" Name= "btnDelete" Content="Delete" Margin="5" Click="btnDelete_Click" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" FontStyle="Italic" Background="{x:Null}" >
+                <Button.Effect>
+                    <DropShadowEffect Color="#FF4C9537" RenderingBias="Quality"/>
+                </Button.Effect>
+            </Button>
+            <Button Width="50" Name="btnUpdate" Content="Update" Margin="5" Click="btnUpdate_Click" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" FontStyle="Italic" Background="{x:Null}" >
+                <Button.Effect>
+                    <DropShadowEffect Color="#FF4C9537" RenderingBias="Quality"/>
+                </Button.Effect>
+            </Button>
+            <Button Width="50" Name="btnReload" Content="Reload" Margin="5" Click="btnReload_Click" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" FontStyle="Italic" OpacityMask="{DynamicResource {x:Static SystemColors.MenuTextBrushKey}}" Background="{x:Null}" >
+                <Button.Effect>
+                    <DropShadowEffect Color="#FF4C9537" RenderingBias="Quality"/>
+                </Button.Effect>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

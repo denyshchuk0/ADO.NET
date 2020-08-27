@@ -14,19 +14,26 @@
             <RowDefinition Height="176*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Label  Content="Name" Width="70"/>
-            <TextBox Margin="5" Name="tbName"  Width="200" />
+            <Label  Content="Name" Width="70" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" FontStyle="Italic"/>
+            <TextBox Margin="5" Name="tbName"  Width="200" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" FontStyle="Italic" />
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Label Content="Surname" Width="70"/>
-        <TextBox Margin="5" Name="tbSurname"  Width="200" />
+            <Label Content="Surname" Width="70" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" FontStyle="Italic"/>
+            <TextBox Margin="5" Name="tbSurname"  Width="200" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" FontStyle="Italic" />
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Label Content="Group" Width="70"/>
-            <ComboBox Name="cbGroups" Width="200" Margin="5"/>
+            <Label Content="Group" Width="70" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" FontStyle="Italic"/>
+            <ComboBox Name="cbGroups" Width="200" Margin="5" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" FontStyle="Italic"/>
         </StackPanel>
-        <Button Grid.Row="3" Margin="5" Name="btnAdd" Content="Add" Click="btnAdd_Click" />
-        <Button Grid.Row="3" Margin="5" Name="btnUpdate" Content="Update" Click="btnUpdate_Click" />
-
+        <Button Grid.Row="3" Margin="5" Name="btnAdd" Content="Add" Click="btnAdd_Click" Background="White" ClipToBounds="True" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" FontStyle="Italic" >
+            <Button.Effect>
+                <DropShadowEffect Color="#FF59A200"/>
+            </Button.Effect>
+        </Button>
+        <Button Grid.Row="3" Margin="5" Name="btnUpdate" Content="Update" Click="btnUpdate_Click" Background="#FFF0F0F0" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" FontStyle="Italic" >
+            <Button.Effect>
+                <DropShadowEffect Color="#FF59A200"/>
+            </Button.Effect>
+        </Button>
     </Grid>
 </Window>

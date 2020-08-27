@@ -42,7 +42,7 @@ namespace forStudents
                 command.CommandText = $"delete from Student where id = {StudentsList[lbStudents.SelectedIndex]}";
                 command.Connection = connection;
                 command.BeginExecuteNonQuery();
-               
+              
             }
             catch (SqlException ex)
             {
@@ -53,6 +53,7 @@ namespace forStudents
         private void btnReload_Click(object sender, RoutedEventArgs e)
         {
             lbStudents.Items.Clear();
+            StudentsList.Clear();
             CommandDbSelect();
         }
 

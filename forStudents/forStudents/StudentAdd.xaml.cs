@@ -38,6 +38,7 @@ namespace forStudents
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DbCommand command = Factory.CreateCommand();
+            IdGroup.Clear();
             command.CommandText = "select Name, Id from Groups";
             command.Connection = Connection;
 

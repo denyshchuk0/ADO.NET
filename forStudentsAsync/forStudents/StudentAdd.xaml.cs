@@ -49,7 +49,7 @@ namespace forStudents
         {
             var resault = (SqlCommand)ar.AsyncState;
             var reader = resault.EndExecuteReader(ar);
-
+            IdGroup.Clear();
             if (reader.HasRows)
                 while (reader.Read())
                 {
