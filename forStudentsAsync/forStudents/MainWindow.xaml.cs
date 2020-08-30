@@ -32,6 +32,7 @@ namespace forStudents
         {
             StudentAdd studentWindow = new StudentAdd();
             studentWindow.btnUpdate.Visibility = Visibility.Hidden;
+            studentWindow.cbGroups.SelectedIndex = 0;
             ShowNewWindow(studentWindow);
         }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -42,11 +43,14 @@ namespace forStudents
                 command.CommandText = $"delete from Student where id = {StudentsList[lbStudents.SelectedIndex]}";
                 command.Connection = connection;
                 command.BeginExecuteNonQuery();
-              
+
             }
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally {
+                btnReload_Click(null, null);
             }
         }
 
