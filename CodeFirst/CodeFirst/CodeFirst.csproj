@@ -72,6 +72,14 @@
     <Compile Include="Migrations\202009021457447_fine db.designer.cs">
       <DependentUpon>202009021457447_fine db.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009051016369_fix.cs" />
+    <Compile Include="Migrations\202009051016369_fix.designer.cs">
+      <DependentUpon>202009051016369_fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009051031523_f2.cs" />
+    <Compile Include="Migrations\202009051031523_f2.designer.cs">
+      <DependentUpon>202009051031523_f2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +97,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009021457447_fine db.resx">
       <DependentUpon>202009021457447_fine db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009051016369_fix.resx">
+      <DependentUpon>202009051016369_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009051031523_f2.resx">
+      <DependentUpon>202009051031523_f2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -19,8 +19,7 @@ namespace CodeFirst.Entities
         public int ClientId { get; set; }
         public int AdressId { get; set; }
         public virtual Client Client { get; set; } 
-        public virtual Addres Addres{ get; set; }
-        public int ProductId { get; set; }
+        public virtual Addres Addres{ get; set; } 
         public virtual ICollection<Product> Products { get; set; }
 
         public Order() 
