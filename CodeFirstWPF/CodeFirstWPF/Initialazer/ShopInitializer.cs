@@ -39,17 +39,54 @@ namespace CodeFirstWPF.Initialazer
                 new Manufacturer() { Name = "OOO BookmanC",Phone ="098735243"},
                 new Manufacturer() { Name = "OOO Fozzy", Phone = "098352637"}
             });
+            context.SaveChanges();
+
             context.Manufacturers.FirstOrDefault(x => x.Name == "OOO Adidas").Addreses.Add(context.Addreses.FirstOrDefault(x => x.Country.Equals("Ukraine")));
             context.Manufacturers.FirstOrDefault(x => x.Name == "OOO Apple").Addreses.Add(context.Addreses.FirstOrDefault(x => x.Country.Equals("Japan")));
             context.Manufacturers.FirstOrDefault(x => x.Name == "OOO BookmanC").Addreses.Add(context.Addreses.FirstOrDefault(x => x.Country.Equals("USA")));
             context.Manufacturers.FirstOrDefault(x => x.Name == "OOO Fozzy").Addreses.Add(context.Addreses.FirstOrDefault(x => x.City.Equals("Zmerenka")));
 
-            context.Orders.AddRange(new List<Order>() { 
-                new Order() {Date = Convert.ToDateTime("20.08.2002"), TotalPrice = 2234, Client=context.Clients.FirstOrDefault(x=>x.Name.Equals("Bill")),  }
+            context.Products.AddRange(new List<Product>() {
+            new Product () {
+            Name = "Maslo",
+            Category = context.Categories.FirstOrDefault(x=>x.Name== "Foods"),
+            Manufacturer = context.Manufacturers.FirstOrDefault(x=>x.Name=="OOO Fozzy"),
+            Price = 200},
+            new Product () {
+            Name = "Bread",
+            Category = context.Categories.FirstOrDefault(x=>x.Name== "Foods"),
+            Manufacturer = context.Manufacturers.FirstOrDefault(x=>x.Name=="OOO Fozzy"),
+            Price = 15},
+            new Product () {
+            Name = "Clean Code",
+            Category = context.Categories.FirstOrDefault(x=>x.Name== "Books"),
+            Manufacturer = context.Manufacturers.FirstOrDefault(x=>x.Name=="OOO BookmanC"),
+            Price = 320},
+            new Product () {
+            Name = "IPhone 2",
+            Category = context.Categories.FirstOrDefault(x=>x.Name== "Phones"),
+            Manufacturer = context.Manufacturers.FirstOrDefault(x=>x.Name=="OOO Apple"),
+            Price = 1000},
+            new Product () {
+            Name = "Krasovky",
+            Category = context.Categories.FirstOrDefault(x=>x.Name== "Shoses"),
+            Manufacturer = context.Manufacturers.FirstOrDefault(x=>x.Name=="OOO Adidas"),
+            Price = 4000},
             });
 
-
-
+            context.Orders.AddRange(new List<Order>() {
+                new Order() {
+                    Date = Convert.ToDateTime("20.08.2002"),
+                    TotalPrice = 2234, 
+                    Client=context.Clients.FirstOrDefault(x=>x.Name.Equals("Bill")),
+                    Addres = context.Addreses.FirstOrDefault(x=>x.City=="Zmerenka")},
+                 new Order() {
+                    Date = Convert.ToDateTime("28.08.2019"),
+                    TotalPrice = 1134,
+                    Client=context.Clients.FirstOrDefault(x=>x.Name.Equals("Tom")),
+                    Addres = context.Addreses.FirstOrDefault(x=>x.City=="Japan")}
+            });
+            context.SaveChanges();
 
             base.Seed(context);
         }

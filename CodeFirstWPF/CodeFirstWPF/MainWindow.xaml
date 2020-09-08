@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Menu>
+            <MenuItem Header="Clients">
+                <DataGrid Name="dgClients"/>
+            </MenuItem>
+            <MenuItem Header="Products">
+                <DataGrid Name="dgProducts"/>
+            </MenuItem>
+            <MenuItem Header="Addres">
+                <DataGrid Name="dgAddres"/>
+            </MenuItem>
+            <MenuItem Header="Categories">
+                <DataGrid x:Name="dgCategories"/>
+            </MenuItem>
+            <MenuItem Header="Manufacturers">
+                <DataGrid x:Name="dgManufacturers"/>
+            </MenuItem>
+            <MenuItem Header="Orders">
+                <DataGrid x:Name="dgOrders"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>

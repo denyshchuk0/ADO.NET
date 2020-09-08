@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CodeFirst.Entities;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +22,30 @@ namespace CodeFirstWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        static AplicationContext context = new AplicationContext();
+        List tmp;
         public MainWindow()
         {
+
             InitializeComponent();
+            Title = context.Clients.FirstOrDefault(x => x.Name == "Tom").Name;
+            context.SaveChanges();
+
+            dgClients.AutoGenerateColumns = true;
+         
+            NewMethod(context.Clients);
+            context.SaveChanges();
+
+        }
+
+        private void NewMethod(DbSet dbSet)
+        {
+            foreach (var item in dbSet)
+            {
+                list.Add(item);
+            }
+
+            dgClients.ItemsSource = list;
         }
     }
 }
