@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Menu>
-            <MenuItem Header="Clients">
+            <MenuItem Header="Clients" >
                 <DataGrid Name="dgClients"/>
             </MenuItem>
             <MenuItem Header="Products">

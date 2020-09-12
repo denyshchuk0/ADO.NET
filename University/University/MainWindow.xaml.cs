@@ -45,7 +45,7 @@ namespace University
             {
                 Name = tbName.Text,
                 Surname = tbSurname.Text,
-                IdGroup = Convert.ToInt32(tbGroup.Text)
+                GroupName = tbGroup.Text
             };
 
             service.AddStudents(students);
@@ -54,11 +54,36 @@ namespace University
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            StudentsDTO students = new StudentsDTO
+            int stId = (dgStudent.Items[dgStudent.SelectedIndex] as StudentsDTO).Id;
+
+            foreach (var item in Students)
             {
-           
-            };
-      
+                if (item.Id == stId)
+                {
+                    service.DeleteStudent(item);
+                    break;
+                }
+
+            }
+            Update(service);
+
+        }
+
+        private void btnUpDate_Click(object sender, RoutedEventArgs e)
+        {
+            int stId = (dgStudent.Items[dgStudent.SelectedIndex] as StudentsDTO).Id;
+
+            foreach (var item in Students)
+            {
+                if (item.Id == stId)
+                {
+                    item.Surname = tbSurname.Text;
+                    service.UpdateStudent(item);
+                    break;
+                }
+            }
+     
+            Update(service);
         }
     }
 }

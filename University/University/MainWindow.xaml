@@ -23,6 +23,7 @@
             <TextBox x:Name="tbGroup"/>
             <Button  x:Name="btnCreate" Content="create" Click="btnCreate_Click"/>
             <Button  x:Name="btnDelete" Content="delete" Click="btnDelete_Click"/>
+            <Button  x:Name="btnUpDate" Content="update" Click="btnUpDate_Click"    />
 
         </StackPanel>
     </Grid>

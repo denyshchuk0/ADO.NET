@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using University.BLL.Model;
@@ -43,7 +44,10 @@ namespace University.BLL.Services
         public void DeleteStudent(StudentsDTO student)
         {
             var deleteStudent = mapper.Map<Student>(student);
-            repoStudent.Delete(deleteStudent);
+            var group = repoGroup.Read().FirstOrDefault(x => x.Name == student.GroupName);
+            deleteStudent.Groups = group;
+            var del = repoStudent.Read().FirstOrDefault(x => x.Id == deleteStudent.Id);
+            repoStudent.Delete(del);
         }
 
         public IEnumerable<GroupDTO> GetGroup()
@@ -67,7 +71,11 @@ namespace University.BLL.Services
 
         public void UpdateStudent(StudentsDTO students)
         {
-            throw new NotImplementedException();
+            var updateStudent = mapper.Map<Student>(students);
+            var group = repoGroup.Read().FirstOrDefault(x => x.Name == students.GroupName);
+            updateStudent.Groups = group;
+            var up = updateStudent;
+            repoStudent.Update(up);
         }
     }
 }

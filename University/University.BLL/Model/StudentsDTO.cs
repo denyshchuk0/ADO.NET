@@ -14,6 +14,6 @@ namespace University.BLL.Model
 
         public string Surname { get; set; }
 
-        public int? IdGroup { get; set; }
+        public string GroupName { get; set; }
     }
 }

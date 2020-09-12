@@ -12,8 +12,8 @@ namespace University.DAL
         {
         }
 
-        public virtual DbSet<Groups> Groups { get; set; }
-        public virtual DbSet<Student> Student { get; set; }
+        public  DbSet<Groups> Groups { get; set; }
+        public  DbSet<Student> Student { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

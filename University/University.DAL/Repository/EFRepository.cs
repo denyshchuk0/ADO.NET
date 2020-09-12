@@ -27,7 +27,7 @@ namespace University.DAL.Repository
         {
             set.Remove(entity);
             context.SaveChanges();
-        }
+            }
 
         public IEnumerable<TEntity> Read()
         {

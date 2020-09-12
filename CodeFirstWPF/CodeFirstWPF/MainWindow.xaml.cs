@@ -1,19 +1,7 @@
 ﻿using CodeFirst.Entities;
-using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CodeFirstWPF
 {
@@ -23,29 +11,89 @@ namespace CodeFirstWPF
     public partial class MainWindow : Window
     {
         static AplicationContext context = new AplicationContext();
-        List tmp;
+
+        List<Client> Clients;
+        List<Addres> Addres;
+        List<Category> Categories;
+        List<Manufacturer> Manufacturers;
+        List<Order> Orders;
+        List<Product> Products;
         public MainWindow()
         {
 
             InitializeComponent();
             Title = context.Clients.FirstOrDefault(x => x.Name == "Tom").Name;
             context.SaveChanges();
-
+           
             dgClients.AutoGenerateColumns = true;
-         
-            NewMethod(context.Clients);
-            context.SaveChanges();
 
+            FillGrClients();
+            FillGrAddres();
+            FillGrCategory();
+            FillGrManufacturers();
+            FillGrOrders();
+            FillGrProduct();
+
+            context.SaveChanges();
         }
 
-        private void NewMethod(DbSet dbSet)
+        private void FillGrClients()
         {
-            foreach (var item in dbSet)
+            Clients = new List<Client>();
+            foreach (var item in context.Clients)
             {
-                list.Add(item);
+                Clients.Add(item);
             }
+            dgClients.ItemsSource = Clients;
+        }
+        private void FillGrProduct()
+        {
+            Products = new List<Product>();
+            foreach (var item in context.Products)
+            {
+                Products.Add(item);
+            }
+            dgProducts.ItemsSource = Products;
+        }
 
-            dgClients.ItemsSource = list;
+        private void FillGrAddres()
+        {
+            Addres = new List<Addres>();
+            foreach (var item in context.Addreses)
+            {
+                Addres.Add(item);
+            }
+            dgAddres.ItemsSource = Addres;
+        }
+
+        private void FillGrCategory()
+        {
+            Categories = new List<Category>();
+            foreach (var item in context.Categories)
+            {
+                Categories.Add(item);
+            }
+            dgCategories.ItemsSource = Categories;
+        }
+
+        private void FillGrManufacturers()
+        {
+            Manufacturers = new List<Manufacturer>();
+            foreach (var item in context.Manufacturers)
+            {
+                Manufacturers.Add(item);
+            }
+            dgManufacturers.ItemsSource = Manufacturers;
+        }
+
+        private void FillGrOrders()
+        {
+            Orders = new List<Order>();
+            foreach (var item in context.Orders)
+            {
+                Orders.Add(item);
+            }
+            dgOrders.ItemsSource = Orders;
         }
     }
 }

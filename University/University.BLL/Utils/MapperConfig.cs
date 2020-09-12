@@ -13,8 +13,8 @@ namespace University.BLL.Utils
     {
         public MapperConfig()
         {
-            CreateMap<Student, StudentsDTO>();
-            CreateMap<StudentsDTO, Student>();
+            CreateMap<Student, StudentsDTO>().ForMember(x=>x.GroupName, opt=>opt.MapFrom(x=>x.Groups.Name));
+            CreateMap<StudentsDTO, Student>().ForMember(x=>x.Groups, opt=>opt.MapFrom(x=>new Groups { Name = x.GroupName}));
             CreateMap<GroupDTO, Groups>();
             CreateMap<Groups, GroupDTO>();
         }
