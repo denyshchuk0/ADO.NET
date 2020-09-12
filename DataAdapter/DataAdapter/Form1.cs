@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DataAdapter
@@ -16,10 +10,10 @@ namespace DataAdapter
     public partial class Form1 : Form
     {
         static string connectionString = ConfigurationManager.ConnectionStrings["defaultConnection"].ConnectionString;
-        SqlConnection connection = null;
-        SqlDataAdapter adapter = null;
-        SqlCommandBuilder builder = null;
-        DataSet set = null;
+        SqlConnection connection;
+        SqlDataAdapter adapter;
+        SqlCommandBuilder builder;
+        DataSet set;
         public Form1()
         {
             InitializeComponent();
@@ -35,7 +29,7 @@ namespace DataAdapter
 
         private void button1_Click(object sender, EventArgs e)
         {
-                byte[] image;
+            byte[] image;
             OpenFileDialog dialog = new OpenFileDialog();
             string fileName = "";
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -46,7 +40,7 @@ namespace DataAdapter
                     image = new byte[fs.Length];
                     fs.Read(image, 0, image.Length);
                 }
-
+                //enter row
                 set.Tables[0].Rows[int.Parse(textBox1.Text)]["Picture"] = image;
 
                 SqlCommand command = new SqlCommand($"Update Books SET Picture = @p1  where Id = @p2");
