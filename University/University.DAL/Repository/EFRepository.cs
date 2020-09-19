@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace University.DAL.Repository
         }
         public void Create(TEntity entity)
         {
+            
             set.Add(entity);
             context.SaveChanges();
         }
@@ -36,7 +38,7 @@ namespace University.DAL.Repository
 
         public void Update(TEntity entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
+            context.Set<TEntity>().AddOrUpdate(entity);
             context.SaveChanges();
         }
     }

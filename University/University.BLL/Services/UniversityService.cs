@@ -32,6 +32,8 @@ namespace University.BLL.Services
         public void AddStudents(StudentsDTO student)
         {
             var addStudent = mapper.Map<Student>(student);
+            var group = repoGroup.Read().FirstOrDefault(x => x.Name == student.GroupName);
+            addStudent.Groups = group;
             repoStudent.Create(addStudent);
         }
 
@@ -74,6 +76,7 @@ namespace University.BLL.Services
             var updateStudent = mapper.Map<Student>(students);
             var group = repoGroup.Read().FirstOrDefault(x => x.Name == students.GroupName);
             updateStudent.Groups = group;
+            updateStudent.IdGroup = group.Id;
             var up = updateStudent;
             repoStudent.Update(up);
         }

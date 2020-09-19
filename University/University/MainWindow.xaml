@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:University"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="465" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="306*"/>
@@ -15,16 +15,35 @@
             <ColumnDefinition Width="395*"/>
             <ColumnDefinition Width="397*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid ItemsSource="{Binding}" Name="dgStudent"/>
-        <DataGrid Grid.Column="1" ItemsSource="{Binding}" Name="dgGroup"/>
-        <StackPanel Grid.Row="2" >
-            <TextBox x:Name="tbName"/>
-            <TextBox x:Name="tbSurname"/>
-            <TextBox x:Name="tbGroup"/>
-            <Button  x:Name="btnCreate" Content="create" Click="btnCreate_Click"/>
-            <Button  x:Name="btnDelete" Content="delete" Click="btnDelete_Click"/>
-            <Button  x:Name="btnUpDate" Content="update" Click="btnUpDate_Click"    />
+        <DataGrid ItemsSource="{Binding}" Name="dgStudent" SelectionChanged="dgStudent_SelectionChanged" Margin="5"/> 
+        <DataGrid Grid.Column="1" ItemsSource="{Binding}" Name="dgGroup" Margin="5"/>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Name" />
+                <TextBox x:Name="tbName" Width="200" Margin="45 0 0 0"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Label Content="Surname"/>
+                <TextBox x:Name="tbSurname" Width="200" Margin="29 0 0 0"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <Label  Content="Group"/>
+                <ComboBox  x:Name="cbGroup" Width="200" Margin="44 0 0 0"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button  x:Name="btnCreate" Content="create" Click="btnCreate_Click" Width="150"/>
+                <Button  x:Name="btnDelete" Content="delete" Click="btnDelete_Click" Width="150"/>
+            </StackPanel> 
+            <Button  x:Name="btnUpDate" Grid.Row="4" Content="update" Click="btnUpDate_Click"
+                     Width="300"/>
 
-        </StackPanel>
+        </Grid>
     </Grid>
 </Window>
